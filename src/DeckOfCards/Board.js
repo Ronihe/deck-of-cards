@@ -28,6 +28,13 @@ class Board extends Component {
     console.log(deckIdRes);
     const deckId = deckIdRes.data.deck_id;
     this.setState({ deckId: deckId });
+    this.timer = setInterval(() => {
+      this.getAcard();
+    }, 3000);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer);
   }
 
   // pick a card with deckId and API
